@@ -11,9 +11,11 @@ see [log4php configuration](http://logging.apache.org/log4php/docs/configuration
 
 ### application/config/config.php
 logging log_threshold
+
 	$config['log_threshold'] = 4;
 
 do not use log_path
+
 	$config['log_path'] = '';
 
 ## Logging
