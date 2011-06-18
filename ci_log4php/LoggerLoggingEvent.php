@@ -143,6 +143,18 @@ class LoggerLoggingEvent {
 			}
 		}
 	}
+	
+	/**
+	 * CodeIgniter wrapper logging functions
+	 * @var array
+	 */
+	private static $ci_logger_functions = array('log_error', 'log_info', 'log_debug');
+	
+	/**
+	 * CodeIgniter wrapper logging default function
+	 * @var string
+	 */
+	private static $ci_logger_default_function = 'log_message';
 
 	/**
 	 * Set the location information for this logging event. The collected
@@ -164,16 +176,12 @@ class LoggerLoggingEvent {
 				// make a downsearch to identify the caller
 				$hop = array_pop($trace);
 				while($hop !== null) {
-					if(isset($hop['class'])) {
-						// we are sometimes in functions = no class available: avoid php warning here
-						$className = strtolower($hop['class']);
-						if(!empty($className) and ($className == 'logger' or $className == 'loggercategory' or 
-							strtolower(get_parent_class($className)) == 'logger' or
-							strtolower(get_parent_class($className)) == 'loggercategory')) {
-							$locationInfo['line'] = $hop['line'];
-							$locationInfo['file'] = $hop['file'];
-							break;
-						}
+					// for customize CodeIgniter
+					$function = $hop['function'];
+					if ( in_array($function, self::$ci_logger_functions)
+						|| $function == self::$ci_logger_default_function ) {
+						$locationInfo['line'] = $hop['line'];
+						$locationInfo['file'] = $hop['file'];
 					}
 					$prevHop = $hop;
 					$hop = array_pop($trace);
