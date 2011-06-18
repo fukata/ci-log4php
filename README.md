@@ -6,9 +6,14 @@ Integration CodeIgniter(+2.0) and log4php.
 	cp -R ci_log4php [CI Application Directory]/application/third_party/
 
 ## Settings
-	vi [CI Application Directory]/application/config/log4php.properties
-
+### application/config/log4php.properties
 see [log4php configuration](http://logging.apache.org/log4php/docs/configuration.html).
+
+### application/config/config.php
+* logging log_threshold
+	$config['log_threshold'] = 4;
+* do not use log_path
+	$config['log_path'] = '';
 
 ## Logging
 	// CodeIgniter default logging function.
