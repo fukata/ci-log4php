@@ -1,17 +1,16 @@
 ## What's this
 Integration CodeIgniter(+2.0) and log4php.
 
-## How to
-### Installation
+## Installation
 	cp -R ci_app [CI Application Directory]
 	cp -R ci_log4php [CI Application Directory]/application/third_party/
 
-### Settings
+## Settings
 	vi [CI Application Directory]/application/config/log4php.properties
 
 see [log4php configuration](http://logging.apache.org/log4php/docs/configuration.html).
 
-### Logging
+## Logging
 	// CodeIgniter default logging function.
 	log_message('debug', 'hogehoge');
 	
