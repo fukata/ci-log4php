@@ -42,7 +42,7 @@ class MY_Log extends CI_Log {
 				$this->logger->debug($msg);
 				break;
 			default:
-				$this->$logger->debug($msg);
+				$this->logger->debug($msg);
 				break;
 		}
 		
