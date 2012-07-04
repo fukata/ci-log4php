@@ -19,6 +19,14 @@ class MY_Log extends CI_Log {
 			$this->logger = Logger::getRootLogger();
 		}
 	}
+
+	public function reConfigure($configuration = null, $configurationClass = null) {
+		if ($this->initialized === false) {
+			Logger::resetConfiguration();
+			Logger::configure($configuration, $configurationClass);
+			$this->logger = Logger::getRootLogger();
+		}
+	}
 	
 	public function write_log($level = 'error', $msg, $php_error = FALSE) {
 		if ($this->_enabled === FALSE) {
