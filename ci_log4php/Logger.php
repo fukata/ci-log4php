@@ -63,6 +63,7 @@ class Logger {
 		'LoggerConfiguratorBasic' => '/configurators/LoggerConfiguratorBasic.php',
 		'LoggerConfiguratorIni' => '/configurators/LoggerConfiguratorIni.php',
 		'LoggerConfiguratorPhp' => '/configurators/LoggerConfiguratorPhp.php',
+		'LoggerConfiguratorPhpVariable' => '/configurators/LoggerConfiguratorPhpVariable.php',
 		'LoggerConfiguratorXml' => '/configurators/LoggerConfiguratorXml.php',
 		'LoggerRoot' => '/LoggerRoot.php',
 		'LoggerAppender' => '/LoggerAppender.php',
