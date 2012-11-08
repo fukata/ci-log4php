@@ -5,32 +5,28 @@ class MY_Log extends CI_Log {
 	
 	protected $logger;
 	protected $initialized = false;
-	
+
 	public function __construct() {
 		parent::__construct();
-		
+
 		if ($this->initialized === false) {
 			$this->initialized = true;
 			$config_file = APPPATH . 'config/log4php.properties';
-			if ( defined('ENVIRONMENT') && file_exists( APPPATH . 'config/' . ENVIRONMENT . '/log4php.properties' ) ) {
+			if ( file_exists( config_item('log4php_configfile') ) ) {
+				$config_file = config_item('log4php_configfile');
+			} else if ( defined('ENVIRONMENT') && file_exists( APPPATH . 'config/' . ENVIRONMENT . '/log4php.properties' ) ) {
 				$config_file = APPPATH . 'config/' . ENVIRONMENT . '/log4php.properties';
 			}
+
 			Logger::configure($config_file);
 			$this->logger = Logger::getRootLogger();
 		}
 	}
 	
 	public function write_log($level = 'error', $msg, $php_error = FALSE) {
-		if ($this->_enabled === FALSE) {
-			return FALSE;
-		}
-		
+
 		$level = strtoupper($level);
 
-		if ( ! isset($this->_levels[$level]) OR ($this->_levels[$level] > $this->_threshold) ) {
-			return FALSE;
-		}
-		
 		switch ($level) {
 			case 'ERROR':
 				$this->logger->error($msg);

@@ -10,7 +10,11 @@ Integration CodeIgniter(+2.0) and log4php.
 see [log4php configuration](http://logging.apache.org/log4php/docs/configuration.html).
 
 ### application/config/config.php
-do edit log_threshold
+customize log4php config file path
+
+	$config['log4php_configfile'] = '/path/to/log4php_configfile.properties';
+
+do not use log_threshold
 
 	$config['log_threshold'] = 0;
 
