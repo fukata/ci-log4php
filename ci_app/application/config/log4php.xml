@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://logging.apache.org/log4php/">
+    <appender name="default" class="LoggerAppenderRollingFile">
+        <layout class="LoggerLayoutPattern">
+	 	<param name="conversionPattern" value="[%p] %d{Y-m-d H:i:s}: %m %n(at %F line %L) %n" />
+	</layout>
+	<param name="file" value="/tmp/app.log" />
+        <param name="maxFileSize" value="5MB" />
+        <param name="maxBackupIndex" value="10" />
+    </appender>
+    <appender name="search_app" class="LoggerAppenderRollingFile">
+        <layout class="LoggerLayoutPattern">
+                <param name="conversionPattern" value="[%p] %d{Y-m-d H:i:s}: %m %n(at %F line %L) %n" />
+        </layout>
+        <param name="file" value="/tmp/search.log" />
+        <param name="maxFileSize" value="5MB" />
+        <param name="maxBackupIndex" value="10" />
+    </appender>
+    <root>
+	<level value='debug'/> 
+        <appender_ref ref="default" />
+    </root>
+    <logger name="search" additivity="false">
+	<level value='debug'/> 
+	<appender_ref ref="search_app" />
+    </logger>
+</configuration>
