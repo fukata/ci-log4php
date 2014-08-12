@@ -580,10 +580,15 @@ class Logger {
 			self::$configurationClass = $configurationClass;
 			return;
 		}
-		
-		if (strtolower(substr( $configurationFile, -4 )) == '.xml') {
+	    
+		$file_ext = strtolower(substr( $configurationFile, -4 ));    
+
+		if ( $file_ext == '.xml') {
 			self::$configurationFile = $configurationFile;
 			self::$configurationClass = 'LoggerConfiguratorXml';
+		} elseif ( $file_ext == '.php') {
+			self::$configurationFile = $configurationFile;
+			self::$configurationClass = 'LoggerConfiguratorPhp';
 		} else {
 			self::$configurationFile = $configurationFile;
 			self::$configurationClass = 'LoggerConfiguratorIni';
